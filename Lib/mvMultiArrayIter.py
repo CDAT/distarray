@@ -13,6 +13,7 @@ __version__ = "0.9"
 
 # standard modules
 import operator
+from functools import reduce
 
 class MultiArrayIter:
 
@@ -39,7 +40,7 @@ class MultiArrayIter:
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         if self.big_index < self.ntot - 1:
             self.big_index += 1
             return self
@@ -114,11 +115,11 @@ class MultiArrayIter:
 
 def test(rowMajor):
     dims = (2, 3, 4)
-    print 'row major: dims = ', dims
+    print('row major: dims = ', dims)
     for it in MultiArrayIter( (2, 3, 4), rowMajor = rowMajor):
         inds = it.getIndices()
         bi = it.getBigIndex()
-        print inds, bi
+        print(inds, bi)
         assert( it.getBigIndexFromIndices(inds) == it.getBigIndex() )
         inds2 = it.getIndicesFromBigIndex(bi)
         assert( reduce(operator.and_, \

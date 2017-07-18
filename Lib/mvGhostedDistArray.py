@@ -13,7 +13,7 @@ import numpy
 
 __version__ = "0.9"
 
-from mvDistArray import DistArray
+from .mvDistArray import DistArray
 
 def ghArray(arry, dtype=None, ghostWidth=1):
     """
@@ -127,22 +127,22 @@ def test():
 
     # load the data on each PE
     da[:] = data
-    print da
+    print(da)
 
     # this shows how one can access slabs 
     for pe in range(sz):
         winIndex = (-1, 0)
-        print '[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
-              da.get(pe, winID=winIndex)
+        print('[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
+              da.get(pe, winID=winIndex))
         winIndex = (+1, 0)
-        print '[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
-              da.get(pe, winID=winIndex)
+        print('[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
+              da.get(pe, winID=winIndex))
         winIndex = (0, -1)
-        print '[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
-              da.get(pe, winID=winIndex)
+        print('[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
+              da.get(pe, winID=winIndex))
         winIndex = (0, +1)
-        print '[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
-              da.get(pe, winID=winIndex)
+        print('[%d] %s slab belonging to %d is: \n' % (rk, str(winIndex), pe), \
+              da.get(pe, winID=winIndex))
 
     # to keep mpi4py quite
     da.free()
