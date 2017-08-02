@@ -13,9 +13,9 @@ __version__ = "0.9"
 
 # standard modules
 import operator
-from functools import reduce
+from builtins import object
 
-class MultiArrayIter:
+class MultiArrayIter(object):
 
     def __init__(self, dims, rowMajor=True):
         """
