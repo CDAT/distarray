@@ -8,12 +8,13 @@ No guarantee is provided whatsoever. Use at your own risk.
 
 Alex Pletzer, Tech-X Corp. (2012)
 """
-
+from __future__ import print_function
 __version__ = "1.0"
 
 import numpy
 import distarray
 import time
+from functools import reduce
 
 class LaplacianTest:
 
@@ -191,7 +192,7 @@ class LaplacianTest:
             pylab.plot([xVal, xVal], [ys[0], ys[-1]], 'k--')
         pylab.show()
         fname = re.sub(r'_rk\*.txt', '', rootFilename) + '.png'
-        print 'saving colorplot in file ' + fname
+        print('saving colorplot in file ' + fname)
         pylab.savefig(fname)
 
 ######################################################################
@@ -224,7 +225,7 @@ def test():
         return res
 
     decomp = getOptimalDecomp()
-    print '[%d] decomp = %s' % (rk, str(decomp))
+    print('[%d] decomp = %s' % (rk, str(decomp)))
 
     # physical domain sizes
     Ly, Lx = decomp[0]*1.0, decomp[1]*1.0
@@ -259,6 +260,6 @@ def test():
     lp.getLaplacian(x0s=(y0, x0), ls=(lx, ly), plot=True)
     toc = time.time()
     if rk == 0:
-        print 'time to compute Laplacian: %g sec' % (toc - tic)
+        print('time to compute Laplacian: %g sec' % (toc - tic))
     
 if __name__ == '__main__': test()

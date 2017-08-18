@@ -178,17 +178,17 @@ def test():
     if rk > 0:
         try:
             assert( numpy.all( diff == 100 ) )
-            print '[%d]...OK' % rk
+            print('[%d]...OK' % rk)
         except: 
-            print '[%d] daLocalEast=%s\ndaOtherEast=%s' % (rk, str(daLocalEast), str(daOtherEast))
-            print 'error: ', numpy.sum( diff - 100 )
+            print('[%d] daLocalEast=%s\ndaOtherEast=%s' % (rk, str(daLocalEast), str(daOtherEast)))
+            print('error: ', numpy.sum( diff - 100 ))
     else:
         try:
             assert( numpy.all( diff == -100*(sz-1) ) )
-            print '[%d]...OK' % rk
+            print('[%d]...OK' % rk)
         except:
-            print '[%d] daLocalEast=%s\ndaOtherEast=%s' % (rk, str(daLocalEast), str(daOtherEast))
-            print 'error: ', numpy.sum( diff + 100*(sz-1) )
+            print('[%d] daLocalEast=%s\ndaOtherEast=%s' % (rk, str(daLocalEast), str(daOtherEast)))
+            print('error: ', numpy.sum( diff + 100*(sz-1) ))
 
     # delete windows
     da.free()

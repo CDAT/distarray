@@ -13,7 +13,8 @@ __version__ = "0.9"
 
 # standard modules
 import operator
-from mvMultiArrayIter import MultiArrayIter
+from .mvMultiArrayIter import MultiArrayIter
+from functools import reduce
 
 def getPrimeFactors(n):
     """
@@ -190,18 +191,18 @@ def test():
     for nprocs in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18:
         d = CubeDecomp(nprocs = nprocs, dims = dims)
         if nprocs == 1:
-            print 'valid prcessor counts: ', d.getNumberOfValidProcs()
-        print 'nprocs = ', nprocs, ' decomp: ', d.getDecomp()
+            print('valid prcessor counts: ', d.getNumberOfValidProcs())
+        print('nprocs = ', nprocs, ' decomp: ', d.getDecomp())
         for procId in range(nprocs):
-            print ('[%d] start/end indices %s: ' \
-                       % (procId, str(d.getSlab(procId))))
+            print(('[%d] start/end indices %s: ' \
+                       % (procId, str(d.getSlab(procId)))))
             procN = d.getNeighborProc(procId, offsetN)
             procE = d.getNeighborProc(procId, offsetE)
             procS = d.getNeighborProc(procId, offsetS)
             procW = d.getNeighborProc(procId, offsetW)
-            print '      %s     ' % str(procN)
-            print '%s         %s' % (str(procW), str(procE))
-            print '      %s     ' % str(procS)
+            print('      %s     ' % str(procN))
+            print('%s         %s' % (str(procW), str(procE)))
+            print('      %s     ' % str(procS))
     
 if __name__ == '__main__':
     test()
