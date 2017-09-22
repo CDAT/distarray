@@ -44,9 +44,11 @@ class MultiArrayIter(object):
     def __next__(self):
         if self.big_index < self.ntot - 1:
             self.big_index += 1
-            return next(self)
+            return self
         else:
             raise StopIteration
+
+    next = __next__ # for Python 2
 
     def getIndices(self):
         """
