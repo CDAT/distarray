@@ -12,10 +12,11 @@ Alex Pletzer, Tech-X Corp. (2012)
 __version__ = "0.9"
 
 # standard modules
-import operator
+from builtins import object
 from functools import reduce
+import operator
 
-class MultiArrayIter:
+class MultiArrayIter(object):
 
     def __init__(self, dims, rowMajor=True):
         """
@@ -43,7 +44,7 @@ class MultiArrayIter:
     def __next__(self):
         if self.big_index < self.ntot - 1:
             self.big_index += 1
-            return self
+            return next(self)
         else:
             raise StopIteration
 
