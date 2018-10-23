@@ -1,0 +1,26 @@
+package:
+    name: distarray
+    version: @VERSION@
+
+source:
+    git_rev: @UVCDAT_BRANCH@
+    git_url: git://github.com/CDAT/distarray.git
+
+build:
+  number: @BUILD_NUMBER@
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
+ 
+requirements:
+  build:
+    - python
+    - setuptools
+    - pip
+  run:
+    - python
+
+about:
+    home:  http://github.com/CDAT/distarray
+
+
+
